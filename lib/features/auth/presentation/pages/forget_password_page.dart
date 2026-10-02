@@ -11,7 +11,12 @@ class ForgetPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
+        centerTitle: true,
+        backgroundColor: AppColors.background,
+        elevation: 0,
         title:  Text('Forget Password' ,style: TextStyle( color: AppColors.primary , fontWeight: FontWeight.bold , fontSize: 20 )),
         leading: IconButton(
           onPressed: () {
@@ -39,7 +44,26 @@ class ForgetPasswordPage extends StatelessWidget {
             ),
             SizedBox(height: 24,),
             AppTextField(
-              prefixIcon: Icon(Icons.email_outlined, size: 35),
+              keyboardType: TextInputType.emailAddress,
+              validator: (value) {
+                if (value == null || value.trim().isEmpty) {
+                  return 'Please enter your email';
+                }
+                return null;
+              },
+
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
+              hintStyle: TextStyle(
+                color: Colors.white70,
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
+              backgroundColor: null,
+              prefixIcon: Icon(Icons.email_outlined, size: 35 , color: Colors.white70,),
               suffixIcon: null,
               obscureText: false,
               hintText: "Your Email",

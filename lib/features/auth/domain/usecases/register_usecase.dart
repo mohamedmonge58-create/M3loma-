@@ -1,4 +1,3 @@
-import '../entities/user_entity.dart';
 import '../repositories/auth_repository.dart';
 
 class RegisterUseCase {
@@ -6,15 +5,15 @@ class RegisterUseCase {
 
   RegisterUseCase(this.repository);
 
-  Future<UserEntity> call({
-    required String name,
+  Future<void> call({
     required String email,
     required String password,
-  }) {
-    return repository.register(
-      name: name,
+  }) async {
+    await repository.register(
       email: email,
       password: password,
     );
   }
-}
+
+
+  }

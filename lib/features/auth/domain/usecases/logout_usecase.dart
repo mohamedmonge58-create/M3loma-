@@ -5,7 +5,11 @@ class LogoutUseCase {
 
   LogoutUseCase(this.repository);
 
-  Future<void> call() {
-    return repository.logout();
+  Future<void> call() async {
+    await repository.logout();
   }
 }
+
+
+
+

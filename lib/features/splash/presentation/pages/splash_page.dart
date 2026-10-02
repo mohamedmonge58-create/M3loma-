@@ -1,10 +1,12 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/services/storage_service.dart';
 import '../../../../core/theme/app_assets.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../auth/presentation/pages/login_page.dart';
+import '../../../home/presentation/pages/home_page.dart';
 import '../../../onboarding/presentation/pages/onboarding_page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -18,23 +20,38 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+    _navigateAfterSplash();
 
-    Timer(
+
+
+  }
+  Future<void> _navigateAfterSplash() async {
+    await Future.delayed(
       const Duration(seconds: 3),
-      () {
-        if (!mounted) return;
-        final bool isCompleted =
-            StorageService.instance.isOnboardingCompleted();
-        final Widget destination =
-            isCompleted ? const LoginPage() : const OnboardingPage();
+    );
 
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => destination,
-          ),
-        );
-      },
+    if (!mounted) return;
+
+    final bool isCompleted =
+    StorageService.instance.isOnboardingCompleted();
+
+    final User? user = FirebaseAuth.instance.currentUser;
+
+    late final Widget destination;
+
+    if (!isCompleted) {
+      destination = const OnboardingPage();
+    } else if (user != null) {
+      destination = const HomePage();
+    } else {
+      destination = const LoginPage();
+    }
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (_) => destination,
+      ),
     );
   }
 

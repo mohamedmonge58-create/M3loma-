@@ -10,6 +10,8 @@ class StorageService {
 
   Future<void> init() async {
     _prefs ??= await SharedPreferences.getInstance();
+    print('SHARED PREFS INITIALIZED: $_prefs');
+
   }
 
   bool isOnboardingCompleted() {
@@ -19,5 +21,17 @@ class StorageService {
   Future<bool> setOnboardingCompleted(bool completed) async {
     _prefs ??= await SharedPreferences.getInstance();
     return await _prefs?.setBool(StorageKeys.onboardingCompleted, completed) ?? false;
+  }
+  bool hasOpenedApp() {
+    return _prefs?.getBool(StorageKeys.hasOpenedApp) ?? false;
+  }
+
+  Future<bool> setHasOpenedApp(bool value) async {
+    _prefs ??= await SharedPreferences.getInstance();
+
+    return await _prefs!.setBool(
+      StorageKeys.hasOpenedApp,
+      value,
+    );
   }
 }

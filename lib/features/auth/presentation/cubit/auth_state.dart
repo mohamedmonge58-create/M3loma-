@@ -1,21 +1,26 @@
-import '../../domain/entities/user_entity.dart';
+import 'package:equatable/equatable.dart';
 
-sealed class AuthState {
+abstract class AuthState extends Equatable {
   const AuthState();
+
+  @override
+  List<Object?> get props => [];
 }
 
-class AuthInitial extends AuthState {}
+class AuthInitial extends AuthState {
+  const AuthInitial();
+}
 
-class AuthLoading extends AuthState {}
+class AuthLoading extends AuthState {
+  const AuthLoading();
+}
 
 class AuthSuccess extends AuthState {
-  final UserEntity user;
-
-  const AuthSuccess(this.user);
+  const AuthSuccess();
 }
 
-class AuthError extends AuthState {
+class AuthFailure extends AuthState {
   final String message;
+  const AuthFailure(this.message);
 
-  const AuthError(this.message);
 }

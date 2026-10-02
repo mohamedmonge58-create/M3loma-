@@ -55,7 +55,7 @@ class OnboardingContent extends StatelessWidget {
             item.description,
             textAlign: TextAlign.center,
             style: AppTextStyles.bodyMedium.copyWith(
-              color: AppColors.primaryText.withOpacity(0.75),
+              color: AppColors.primaryText.withValues(alpha: 0.75),
               height: 1.5,
               fontSize: 15.sp,
             ),

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1078751560968",
+    "project_id": "m3loma-f3550",
+    "storage_bucket": "m3loma-f3550.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078751560968:android:9adf5dda29495daf1798bd",
+        "android_client_info": {
+          "package_name": "com.example.m3loma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078751560968-5v9gnonjtg2l2pompa3kp4ff93rkmtt8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQAIYdt-hLHSK44qm0kTdaYa9hKQ15NME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078751560968-5v9gnonjtg2l2pompa3kp4ff93rkmtt8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1078751560968-b0vm4049r4u5hgt2kos829fltk4qg0gt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.m3loma"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

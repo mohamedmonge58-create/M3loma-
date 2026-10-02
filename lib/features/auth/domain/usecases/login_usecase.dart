@@ -9,10 +9,19 @@ class LoginUseCase {
   Future<UserEntity> call({
     required String email,
     required String password,
-  }) {
-    return repository.login(
+  }) async {
+    final result = await repository.login(
       email: email,
       password: password,
     );
+    return UserEntity(
+      id: result.user!.uid,
+      name: result.user!.displayName ?? '',
+      email: result.user!.email ?? '',
+      phone: result.user!.phoneNumber ?? '',
+
+    );
   }
-}
+
+  }
+

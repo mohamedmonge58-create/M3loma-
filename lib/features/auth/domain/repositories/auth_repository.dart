@@ -1,16 +1,23 @@
-import '../entities/user_entity.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthRepository {
-  Future<UserEntity> login({
+  Future<UserCredential> register({
     required String email,
     required String password,
   });
 
-  Future<UserEntity> register({
-    required String name,
+  Future<UserCredential> login({
     required String email,
     required String password,
   });
+  Future<void> logout(){
+    return Future.value(true);
+  }
+  Future<void> updateName(String name);
 
-  Future<void> logout();
+  Future<void> updateEmail(String email);
+
+  Future<void> updatePhoto(String imageUrl);
+
+
 }
