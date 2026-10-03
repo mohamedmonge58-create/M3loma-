@@ -34,10 +34,7 @@ class _RegisterPageState extends State<RegisterPage> {
       child: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthSuccess) {
-            showSuccessSnackBar(
-              context,
-              "Account created successfully!",
-            );
+            showSuccessSnackBar(context, "Account created successfully!");
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const LoginPage()),
@@ -109,7 +106,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
                       ),
-                      prefixIcon: const Icon(Icons.person_outline, size: 35 , color: Colors.white70,),
+                      prefixIcon: const Icon(
+                        Icons.person_outline,
+                        size: 35,
+                        color: Colors.white70,
+                      ),
                       suffixIcon: null,
                       obscureText: false,
                       hintText: "Your Name",
@@ -135,7 +136,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
                       ),
-                      prefixIcon: const Icon( Icons.email_outlined, size: 35 , color: Colors.white70,),
+                      prefixIcon: const Icon(
+                        Icons.email_outlined,
+                        size: 35,
+                        color: Colors.white70,
+                      ),
                       suffixIcon: null,
                       obscureText: false,
                       hintText: "Your Email",
@@ -161,9 +166,16 @@ class _RegisterPageState extends State<RegisterPage> {
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
                       ),
-                      prefixIcon: const Icon(Icons.lock_outline, size: 35 , color: Colors.white70,),
-                      suffixIcon:
-                          const Icon(Icons.remove_red_eye_outlined, size: 35 , color: Colors.white70,),
+                      prefixIcon: const Icon(
+                        Icons.lock_outline,
+                        size: 35,
+                        color: Colors.white70,
+                      ),
+                      suffixIcon: const Icon(
+                        Icons.remove_red_eye_outlined,
+                        size: 35,
+                        color: Colors.white70,
+                      ),
                       obscureText: true,
                       hintText: "Password",
                     ),
@@ -191,9 +203,16 @@ class _RegisterPageState extends State<RegisterPage> {
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
                       ),
-                      prefixIcon: const Icon(Icons.lock_outline, size: 35 , color: Colors.white70,),
-                      suffixIcon:
-                          const Icon(Icons.remove_red_eye_outlined, size: 35 , color: Colors.white70,),
+                      prefixIcon: const Icon(
+                        Icons.lock_outline,
+                        size: 35,
+                        color: Colors.white70,
+                      ),
+                      suffixIcon: const Icon(
+                        Icons.remove_red_eye_outlined,
+                        size: 35,
+                        color: Colors.white70,
+                      ),
                       obscureText: true,
                       hintText: "Confirm Password",
                     ),
@@ -218,7 +237,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
                       ),
-                      prefixIcon: const Icon(Icons.call, size: 35 , color: Colors.white70,),
+                      prefixIcon: const Icon(
+                        Icons.call,
+                        size: 35,
+                        color: Colors.white70,
+                      ),
                       suffixIcon: null,
                       obscureText: false,
                       hintText: "Your Phone Number",

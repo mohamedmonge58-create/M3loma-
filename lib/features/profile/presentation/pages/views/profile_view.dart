@@ -32,8 +32,7 @@ class _ProfileViewState extends State<ProfileView> {
   }
 
   Future<void> _loadProfileImage() async {
-    final image =
-    await LocalProfileImageService.instance.getProfileImage();
+    final image = await LocalProfileImageService.instance.getProfileImage();
 
     if (!mounted) return;
 
@@ -41,6 +40,7 @@ class _ProfileViewState extends State<ProfileView> {
       _profileImage = image;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
@@ -61,17 +61,19 @@ class _ProfileViewState extends State<ProfileView> {
                     : null,
                 child: _profileImage == null
                     ? Icon(
-                  Icons.person,
-                  size: 60.r,
-                  color: AppColors.textPrimary,
-                )
+                        Icons.person,
+                        size: 60.r,
+                        color: AppColors.textPrimary,
+                      )
                     : null,
-              ),              SizedBox(height: 10.h),
+              ),
+              SizedBox(height: 10.h),
               AnimatedBackground(
                 type: AnimatedBackgroundType.fluidGradient,
                 child: Text(
                   maxLines: 2,
-                  user?.displayName ?? 'M3loma Student',                  style: AppTextStyles.titleLarge.copyWith(
+                  user?.displayName ?? 'M3loma Student',
+                  style: AppTextStyles.titleLarge.copyWith(
                     color: AppColors.primary,
                     fontWeight: FontWeight.bold,
                   ),
@@ -79,59 +81,80 @@ class _ProfileViewState extends State<ProfileView> {
               ),
               SizedBox(height: 4.h),
               Text(
-                user?.email ?? '',                style: AppTextStyles.bodyMedium.copyWith(
+                user?.email ?? '',
+                style: AppTextStyles.bodyMedium.copyWith(
                   color: AppColors.primaryText.withValues(alpha: 0.7),
                 ),
               ),
               SizedBox(height: 20.h),
-               _ProfileTile(
-                 onTab: () async {
-                   await Navigator.push(
-                     context,
-                     MaterialPageRoute(
-                       builder: (context) => const EditProfileView(),
-                     ),
-                   );
+              _ProfileTile(
+                onTab: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const EditProfileView(),
+                    ),
+                  );
 
-                   await _loadProfileImage();
+                  await _loadProfileImage();
 
-                   await FirebaseAuth.instance.currentUser?.reload();
+                  await FirebaseAuth.instance.currentUser?.reload();
 
-                   if (!mounted) return;
+                  if (!mounted) return;
 
-                   setState(() {});
-                 },
+                  setState(() {});
+                },
 
                 icon: Icons.edit_outlined,
                 title: "Edit Profile",
               ),
-               _ProfileTile(
-                 onTab:(){ Navigator.push(context,
-                   MaterialPageRoute(builder: (context) =>  MyCertificates()));},
+              _ProfileTile(
+                onTab: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyCertificates()),
+                  );
+                },
                 icon: Icons.card_membership_outlined,
                 title: "My Certificates",
               ),
-               _ProfileTile(
-                 onTab:(){ Navigator.push(context,
-                     MaterialPageRoute(builder: (context) =>  Notifications()));},
+              _ProfileTile(
+                onTab: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Notifications()),
+                  );
+                },
                 icon: Icons.notifications_outlined,
                 title: "Notifications",
               ),
-               _ProfileTile(
-                 onTab: (){ Navigator.push(context,
-                     MaterialPageRoute(builder: (context) =>  SettingsView()));},
+              _ProfileTile(
+                onTab: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsView()),
+                  );
+                },
                 icon: Icons.settings_outlined,
                 title: "Settings",
               ),
-               _ProfileTile(
-                 onTab: (){ Navigator.push(context,
-                     MaterialPageRoute(builder: (context) =>  HelpSupport()));},
+              _ProfileTile(
+                onTab: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HelpSupport()),
+                  );
+                },
                 icon: Icons.help_outline,
                 title: "Help & Support",
               ),
-               _ProfileTile(
-                 onTab: (){ Navigator.push(context,
-                     MaterialPageRoute(builder: (context) =>  LoginPage()));},
+              _ProfileTile(
+                onTab: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
+                },
                 icon: Icons.logout_outlined,
                 title: "Logout",
               ),
@@ -141,13 +164,15 @@ class _ProfileViewState extends State<ProfileView> {
                 children: [
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Text("About App :",
+                    child: Text(
+                      "About App :",
 
-                        style: AppTextStyles.titleMedium.copyWith(
-                          fontSize: 14,
-                      color: AppColors.primary,
-                      fontWeight: FontWeight.bold,
-                    )),
+                      style: AppTextStyles.titleMedium.copyWith(
+                        fontSize: 14,
+                        color: AppColors.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                   SizedBox(height: 8.h),
                   Align(
@@ -161,14 +186,14 @@ class _ProfileViewState extends State<ProfileView> {
                         children: [
                           TextSpan(
                             text: "M3loma",
-                            style:  TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black54,
                             ),
                           ),
-                           TextSpan(
+                          TextSpan(
                             text:
-                            " is a simple learning platform that helps you discover courses, "
+                                " is a simple learning platform that helps you discover courses, "
                                 "learn new skills, and grow your knowledge.",
                           ),
                         ],
@@ -179,13 +204,15 @@ class _ProfileViewState extends State<ProfileView> {
 
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Text("About Developer :",
+                    child: Text(
+                      "About Developer :",
 
-                        style: AppTextStyles.titleMedium.copyWith(
-                          fontSize: 14,
-                          color: AppColors.primary,
-                          fontWeight: FontWeight.bold,
-                        )),
+                      style: AppTextStyles.titleMedium.copyWith(
+                        fontSize: 14,
+                        color: AppColors.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                   SizedBox(height: 8.h),
                   Align(
@@ -198,15 +225,13 @@ class _ProfileViewState extends State<ProfileView> {
                         ),
                         children: [
                           TextSpan(
-                            text: "This App was proudly developed with passion and countless lines of code by the humble servant of Allah,",
-                            style:  TextStyle(
-                              color: Colors.grey,
-                            ),
-                          ),
-                           TextSpan(
                             text:
-                            " Mohamed Monge❤️",
-                            style:  TextStyle(
+                                "This App was proudly developed with passion and countless lines of code by the humble servant of Allah,",
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                          TextSpan(
+                            text: " Mohamed Monge❤️",
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black54,
                             ),
@@ -215,7 +240,6 @@ class _ProfileViewState extends State<ProfileView> {
                       ),
                     ),
                   ),
-
                 ],
               ),
             ],
@@ -249,10 +273,7 @@ class _ProfileTile extends StatelessWidget {
         color: Colors.transparent,
         borderRadius: AppRadius.medium,
         child: ListTile(
-          leading: Icon(
-            icon,
-            color: AppColors.primary,
-          ),
+          leading: Icon(icon, color: AppColors.primary),
           title: Text(
             title,
             style: AppTextStyles.bodyMedium.copyWith(

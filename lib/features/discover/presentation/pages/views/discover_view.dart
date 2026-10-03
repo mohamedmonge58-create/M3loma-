@@ -153,17 +153,17 @@ class _DiscoverViewState extends State<DiscoverView> {
                 cursorColor: AppColors.primary,
                 decoration: InputDecoration(
                   hintText: "Search courses, topics or instructors...",
-                  hintStyle: const TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
-                  ),
+                  hintStyle: const TextStyle(fontSize: 14, color: Colors.grey),
                   prefixIcon: const Icon(
                     Icons.search,
                     color: AppColors.primary,
                   ),
                   suffixIcon: isSearching
                       ? IconButton(
-                          icon: const Icon(Icons.clear, color: AppColors.primary),
+                          icon: const Icon(
+                            Icons.clear,
+                            color: AppColors.primary,
+                          ),
                           onPressed: () {
                             setState(() {
                               _searchController.clear();
@@ -217,7 +217,6 @@ class _DiscoverViewState extends State<DiscoverView> {
                           itemBuilder: (context, index) {
                             final course = results[index];
                             return CourseCard(
-
                               title: course["title"],
                               instructor: course["instructor"],
                               rating: course["rating"],
@@ -241,14 +240,13 @@ class _DiscoverViewState extends State<DiscoverView> {
                           },
                         )
                       : EmptyStateWidget(
-                    descriptionColor: AppColors.primary,
+                          descriptionColor: AppColors.primary,
 
                           icon: Icons.search_off,
                           title: "No Courses Found",
 
                           description:
                               "No courses matched '$_searchQuery'. Try searching for another course name or topic.",
-
 
                           actionLabel: "Clear Search",
                           onAction: () {

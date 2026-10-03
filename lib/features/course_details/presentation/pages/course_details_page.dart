@@ -5,6 +5,7 @@ import '../../../../core/theme/app_radius.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/widgets/animated_backgrounds/animated_background.dart';
 import '../../../../core/widgets/app_button.dart';
+import '../../../../core/widgets/course_preview_player.dart';
 import '../../../learning/presentation/pages/learning_page.dart';
 
 class CourseDetailsPage extends StatelessWidget {
@@ -12,6 +13,7 @@ class CourseDetailsPage extends StatelessWidget {
   final String instructor;
   final double rating;
   final String duration;
+  final String? previewVideoUrl;
 
   const CourseDetailsPage({
     super.key,
@@ -19,10 +21,14 @@ class CourseDetailsPage extends StatelessWidget {
     required this.instructor,
     required this.rating,
     required this.duration,
+    this.previewVideoUrl,
   });
 
   @override
   Widget build(BuildContext context) {
+    final effectiveVideoUrl = previewVideoUrl ??
+        "https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4";
+
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -50,42 +56,10 @@ class CourseDetailsPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Course Hero Preview
-                    Container(
-                      height: 180.h,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: AppColors.surface,
-                        borderRadius: AppRadius.medium,
-                      ),
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Icon(
-                            Icons.school,
-                            size: 80.r,
-                            color: AppColors.primary.withValues(alpha: 0.3),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: AppColors.primary,
-                            ),
-                            child: IconButton(
-                              icon: const Icon(Icons.play_arrow, color: Colors.white),
-                              iconSize: 36.r,
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LearningPage(courseTitle: title),
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
+                    // Course Hero Preview Player with short demo video
+                    CoursePreviewPlayer(
+                      videoUrl: effectiveVideoUrl,
+                      courseTitle: title,
                     ),
                     SizedBox(height: 20.h),
 

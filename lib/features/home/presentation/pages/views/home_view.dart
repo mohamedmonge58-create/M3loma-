@@ -11,6 +11,7 @@ import '../../../../../core/theme/app_radius.dart';
 import '../../../../../core/theme/app_text_styles.dart';
 import '../../../../../core/widgets/animated_backgrounds/animated_background.dart';
 import '../../../../auth/presentation/cubit/update_profile_cubit.dart';
+import '../../../../course_details/presentation/pages/course_details_page.dart';
 
 class TopicModel {
   final String label;
@@ -491,12 +492,26 @@ class _CourseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: AppRadius.medium,
-      ),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CourseDetailsPage(
+              title: course.title,
+              instructor: course.instructor,
+              rating: course.rating,
+              duration: course.duration,
+            ),
+          ),
+        );
+      },
+      child: Container(
+        padding: EdgeInsets.all(16.w),
+        decoration: BoxDecoration(
+          color: AppColors.surface,
+          borderRadius: AppRadius.medium,
+        ),
       child: Row(
         children: [
           Container(
@@ -558,6 +573,7 @@ class _CourseCard extends StatelessWidget {
           ),
         ],
       ),
+    ),
     );
   }
 }
